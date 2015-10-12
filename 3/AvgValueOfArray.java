@@ -1,48 +1,23 @@
 
-import java.util.Scanner;
-
-public class AvgValueOfArray {
-
-	private float[] array = null;
-	
-	public AverageValueOfArray(int size) {
-		array = new float[size];
+class AvgValueOfArray extends ArrayTask_1x1 {
+	private double avg = 0;
+	public AvgValueOfArray(final int n, final String dataType) {
+		super(n, "The Average value of array.", dataType);
 	}
-	
-	public static void main(String[] args) {
-		final int n = 10;
-		AverageValueOfArray arrAvg = new AverageValueOfArray(n);
-		arrAvg.inputData();
-		System.out.printf("Average value = %f", arrAvg.calc());
+	public double getAvg() {
+		
+		return this.avg;
 	}
-	
-	public void printArray() {
-		StringBuilder strFormatted = new StringBuilder("");
-		for(int i = 0; i < array.length; i++) {
-			strFormatted.append(array[i] + "|");
+	public void performTask() {
+		final Object[] arr = getData();
+		float sum = 0;
+		for(int i = 0; i < arr.length; i++) {
+			sum += ((Number)arr[i]).floatValue();
 		}
-		strFormatted.deleteCharAt(strFormatted.length() - 1);
-		System.out.println(strFormatted);
-		//System.out.println(String.join("|", array));
+		this.avg = sum / arr.length;
 	}
-	
-	public void inputData() {
-		Scanner in = new Scanner(System.in);
-		for(int i = 0; i < array.length; i++) {
-			System.out.printf("Enter a [%d]-value: ", i);
-			array[i] = in.nextFloat();
-		}
-	}
-	
-	public float calc() {
-		float sum = 0f;
-		int i = 0,
-			n = array.length;
-			
-		while (i < n) {
-			sum += array[i];
-			i++;
-		}
-		return (sum / n);
+	public void outputResult() {
+		super.outputResult();
+		System.out.printf("Average value = %f\n", this.avg);
 	}
 }
