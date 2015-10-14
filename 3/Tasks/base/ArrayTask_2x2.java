@@ -44,7 +44,7 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 	/**
 	* Swaps columns by their indexes;
 	*/
-	private static swapColumns(Object[][] arr, int a, int b) {
+	private static void swapColumns(Object[][] arr, int a, int b) {
 		Object tmp = null;
 		for(int i = 0; i < arr[0].length; i++) {
 			tmp = arr[i][a];
