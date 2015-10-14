@@ -41,6 +41,29 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 			}
 		}
 	}
+	/**
+	* Swaps columns by their indexes;
+	*/
+	private static swapColumns(Object[][] arr, int a, int b) {
+		Object tmp = null;
+		for(int i = 0; i < arr[0].length; i++) {
+			tmp = arr[i][a];
+			arr[i][a] = arr[i][b];
+			arr[i][b] = tmp;
+		}
+	}
+	/**
+	* Creates a new array copy from source array.
+	*/
+	private static Object[][] arrayClone(Object[][] arr) {
+		Object[][] res = new Object[arr.length][arr[0].length];
+		for(int i = 0; i < res.length; i++) {
+			for(int j = 0; j < res[i].length; j++) {
+				res[i][j] = arr[i][j];
+			}
+		}
+		return res;
+	}
 	public void randomInitialize() {
 		Random generator = getRandomGenerator();
 		int i, j, m;
