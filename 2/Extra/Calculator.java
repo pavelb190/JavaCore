@@ -37,7 +37,8 @@ public class Calculator {
 			}
 			System.out.println("Current value: " + calc.getValue());
 			System.out.print("Select operation (r - Reset, +, -, *, /, q - Exit): ");
-		} while(!(input = in.nextLine()).contains(EXIT_FLAG));
+		} while(!(input = in.next()).contains(EXIT_FLAG));
+		//} while(!(input = in.nextLine()).contains(EXIT_FLAG));
 	}
 	public void add(double value) {
 		this.value += value;
