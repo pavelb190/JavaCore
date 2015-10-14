@@ -58,7 +58,7 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 	}
 	public void outputResult() {
 		System.out.printf("Source array (%d, %d):\n", array.length, array[0].length);
-		final String frmtString = (dataType.equals("Integer") ? "%d" : "%.2f");
+		final String frmtString = (dataType.equals("Integer") ? "%d " : "%.2f ");
 		int i, j, m;
 		for(i = 0; i < array.length; i++) {
 			m = array[i].length;
