@@ -67,7 +67,6 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 	/**
 	* Creates a new array copy from source array beginning from (i,j) indexes.
 	*/
-	@overload
 	private static Object[][] arrayClone(Object[][] arr, int ii, int jj) {
 		Object[][] res = new Object[arr.length][arr[0].length];
 		for(int i = ii; i < res.length; i++) {
