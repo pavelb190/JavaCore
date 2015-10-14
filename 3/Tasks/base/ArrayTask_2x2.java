@@ -44,7 +44,7 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 	/**
 	* Swaps columns by their indexes;
 	*/
-	private static void swapColumns(Object[][] arr, int a, int b) {
+	public static void swapColumns(Object[][] arr, int a, int b) {
 		Object tmp = null;
 		for(int i = 0; i < arr[0].length; i++) {
 			tmp = arr[i][a];
@@ -55,7 +55,7 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 	/**
 	* Creates a new array copy from source array.
 	*/
-	private static Object[][] arrayClone(Object[][] arr) {
+	public static Object[][] arrayClone(Object[][] arr) {
 		Object[][] res = new Object[arr.length][arr[0].length];
 		for(int i = 0; i < res.length; i++) {
 			for(int j = 0; j < res[i].length; j++) {
@@ -67,7 +67,7 @@ public abstract class ArrayTask_2x2 extends ArrayTask {
 	/**
 	* Creates a new array copy from source array beginning from (i,j) indexes.
 	*/
-	private static Object[][] arrayClone(Object[][] arr, int ii, int jj) {
+	public static Object[][] arrayClone(Object[][] arr, int ii, int jj) {
 		Object[][] res = new Object[arr.length][arr[0].length];
 		for(int i = ii; i < res.length; i++) {
 			for(int j = jj; j < res[i].length; j++) {
