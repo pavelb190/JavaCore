@@ -7,7 +7,7 @@ import plants.flower.florist.Care;
 /**
 * Specifies just one kind of plants (Flower).
 */
-public abstract class Flower extends Plant implements TakingCare<Care> {
+public abstract class Flower extends Plant {
 	
 	/**
 	* Flower's latin name. 

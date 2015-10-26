@@ -1,15 +1,18 @@
 
 package plants.flower.room;
 
+import java.lang.Math;
+
 import plants.flower.Flower;
 import plants.flower.FlowerType;
-import plants.flower.florist.Care;
+import plants.flower.TakingCare;
+//import plants.flower.florist.Care;
 import plants.flower.florist.ToWaterFlowers;
 
 /**
 * Specifies only the room flowers kind.
 */
-public abstract class RoomFlower extends Flower {
+public abstract class RoomFlower extends Flower implements TakingCare<ToWaterFlowers> {
 	
 	private int dailyRateMoisture;
 	private int currentMoistureAmount = 0;
@@ -27,6 +30,18 @@ public abstract class RoomFlower extends Flower {
 		//setCurrentMoistureAmount(getCurrentMoistureAmount(care.getWater()));
 	}
 	
+	/**
+	* Absorbs moisture, grows up and updates the freshness level. ;)
+	*/
+	public void grow() {
+
+		currentMoistureAmount -= dailyRateMoisture;
+
+		double tPercent = (double)(currentMoistureAmount * 100 / dailyRateMoisture);
+
+		setFreshnessLevel(100 - Math.abs(tPercent));
+	}
+
 	public int getCurrentMoistureAmount() {
 		return currentMoistureAmount;
 	}

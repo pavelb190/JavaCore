@@ -5,16 +5,26 @@ public class TestDemo {
 		
 		plants.flower.room.Begonia begonia = new plants.flower.room.Begonia();
 		
-		//begonia.takeCare(new plants.flower.florist.ToWaterFlowers(250));
-		//begonia.takeCare(new plants.flower.florist.ToWaterFlowers(250));
+		System.out.println(begonia.getFreshnessLevel());
+
+		begonia.takeCare(new plants.flower.florist.ToWaterFlowers(450));
 		
-		//System.out.println(begonia.getFreshnessLevel());
+		begonia.grow();
 		
-		//begonia.grow();
+		begonia.takeCare(new plants.flower.florist.ToWaterFlowers(450));
+
+		begonia.grow();
+
+		System.out.println(begonia.getFreshnessLevel());
 		
-		
-		
-		//System.out.println(begonia.getCurrentMoistureAmount());
-		//new plants.flower.room.RoomFlower("ROSA", "Rose", plants.flower.FlowerType.STALK, 250);
+		plants.flower.garden.Rose rose = new plants.flower.garden.Rose();
+
+		rose.grow();
+		rose.grow();
+		//rose.grow();
+
+		rose.takeCare(new plants.flower.florist.ToWeedGrass(5));
+
+		System.out.println(rose.getFreshnessLevel());
 	}
 }
