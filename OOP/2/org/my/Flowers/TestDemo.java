@@ -41,7 +41,7 @@ public class TestDemo {
 	}};
 	*/
 
-	private Map<String, List<? extends Flower>> flowersAll = new HashMap<String, List<Flower>>();
+	//private Map<String, List<? extends Flower>> flowersAll = new HashMap<String, List<Flower>>();
 
 	public static void main(String[] args) {
 		

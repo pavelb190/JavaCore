@@ -2,5 +2,7 @@
 package plants.flower;
 
 public enum FlowerType {
-	SHRUB, STALK, CURLY
+	SHRUB,
+	STALK,
+	CURLY
 }
