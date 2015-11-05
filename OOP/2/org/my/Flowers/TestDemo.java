@@ -16,7 +16,7 @@ import bouquet.BouquetFlowersBuilder;
 
 
 public class TestDemo {
-	
+
 	/**
 	* Can be loaded from an external source*. (later)
 	*/
@@ -45,8 +45,27 @@ public class TestDemo {
 
 	public static void main(String[] args) {
 		
-		BouquetFlowersBuilder bouquet = new BouquetFlowersBuilder();
+		try {
+		
+			persistent.serialize.FlowerSerializer serializer = new persistent.serialize.FlowerSerializer(
+					//System.out, System.in
+					new java.io.FileOutputStream("temp.out"), new java.io.FileInputStream("temp.out")
+				);
 
+			serializer.serialize(new Begonia());
+
+			Begonia a = serializer.unserialize();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			// ...
+		}
+
+		//BouquetFlowersBuilder bouquet = new BouquetFlowersBuilder();
+
+		/*
 		try {
 
 			bouquet.addFlower(new Begonia());
@@ -55,6 +74,7 @@ public class TestDemo {
 
 			e.printStackTrace();
 		}
+		*/
 
 		//System.out.println('Count: ' + bouquet.getBouquet().size());
 		/*

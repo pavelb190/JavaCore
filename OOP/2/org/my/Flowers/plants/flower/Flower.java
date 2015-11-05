@@ -1,13 +1,15 @@
 
 package plants.flower;
 
+import java.io.Serializable;
+
 import plants.Plant;
 import plants.flower.florist.Care;
 
 /**
 * Specifies just one kind of plants (Flower).
 */
-public abstract class Flower extends Plant {
+public abstract class Flower extends Plant implements Serializable {
 	
 	/**
 	* Flower's latin name. 
