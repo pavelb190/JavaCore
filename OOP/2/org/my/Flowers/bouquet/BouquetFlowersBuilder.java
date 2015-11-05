@@ -13,19 +13,17 @@ import java.util.LinkedList;
 */
 public class BouquetFlowersBuilder<T extends Flower>
 {
-	protected List<T> bouquet = null;
+	private List<T> bouquet = new LinkedList<>();
 
 	private int size = -1;
 
 	public BouquetFlowersBuilder()
 	{
-		this.bouquet = new LinkedList<>();
+		// ... Default constructor ...
 	}
 
 	public BouquetFlowersBuilder(int size)
 	{
-		this();
-
 		this.size = size;
 	}
 
@@ -44,7 +42,3 @@ public class BouquetFlowersBuilder<T extends Flower>
 		return this.bouquet;
 	}
 }
-
-//BouquetFlowersBuilder bouquet = new BouquetFlowersBuilder();
-
-//bouquet.addFlower(new Begoinia());
