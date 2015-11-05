@@ -14,6 +14,8 @@ import java.util.HashMap;
 
 import bouquet.BouquetFlowersBuilder;
 
+import persistent.serialize.FlowerSerializer;
+
 
 public class TestDemo {
 
@@ -47,14 +49,16 @@ public class TestDemo {
 		
 		try {
 		
-			persistent.serialize.FlowerSerializer serializer = new persistent.serialize.FlowerSerializer(
+			FlowerSerializer<Begonia> serializer = new FlowerSerializer<>(
 					//System.out, System.in
-					new java.io.FileOutputStream("temp.out"), new java.io.FileInputStream("temp.out")
+					new java.io.FileOutputStream("temp.out"), new java.io.FileInputStream("temp.out"), Begonia.class
 				);
 
 			serializer.serialize(new Begonia());
 
-			Begonia a = serializer.unserialize();
+			Flower a = serializer.unserialize();
+
+			System.out.println(a.getClass().getName());
 
 		} catch (Exception e) {
 

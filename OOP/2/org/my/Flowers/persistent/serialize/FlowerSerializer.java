@@ -10,19 +10,23 @@ import java.io.IOException;
 import plants.flower.Flower;
 
 
-public class FlowerSerializer implements FlowersSerializer<?> {
+public class FlowerSerializer<T extends Flower> implements FlowersSerializer<T> {
 
 	private OutputStream out = null;
 	private InputStream in = null;
 
-	public FlowerSerializer(OutputStream out, InputStream in)
+	private Class<T> clazz;
+
+	public FlowerSerializer(OutputStream out, InputStream in, Class<T> as)
 	{
 		this.out = out;
 
 		this.in = in;
+
+		this.clazz = as;
 	}
 
-	public void serialize(? x) throws IOException
+	public void serialize(T x) throws IOException
 	{
 		ObjectOutputStream out = new ObjectOutputStream(this.out);
 
@@ -33,12 +37,18 @@ public class FlowerSerializer implements FlowersSerializer<?> {
 		out.close();
 	}
 
-	public Flower unserialize() throws IOException
+	//@SuppressWarnings("unchecked")
+	public T unserialize() throws IOException, UnserializeClassNotFoundException, ClassCastException
 	{
 		ObjectInputStream in = new ObjectInputStream(this.in);
 
-		//System.out.println();
+		try {
 
-		return (plants.flower.room.Begonia)in.readObject();
+			return clazz.cast(in.readObject());
+		}
+		catch (ClassNotFoundException e) {
+
+			throw new UnserializeClassNotFoundException();
+		}
 	}
 }
