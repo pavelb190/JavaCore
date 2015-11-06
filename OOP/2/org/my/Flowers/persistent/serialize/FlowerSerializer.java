@@ -15,15 +15,13 @@ public class FlowerSerializer<T extends Flower> implements FlowersSerializer<T> 
 	private OutputStream out = null;
 	private InputStream in = null;
 
-	private Class<T> clazz;
+	//private Class<T> clazz;
 
-	public FlowerSerializer(OutputStream out, InputStream in, Class<T> as)
+	public FlowerSerializer(OutputStream out, InputStream in)
 	{
 		this.out = out;
 
 		this.in = in;
-
-		this.clazz = as;
 	}
 
 	public void serialize(T x) throws IOException
@@ -38,13 +36,13 @@ public class FlowerSerializer<T extends Flower> implements FlowersSerializer<T> 
 	}
 
 	//@SuppressWarnings("unchecked")
-	public T unserialize() throws IOException, UnserializeClassNotFoundException, ClassCastException
+	public Object unserialize() throws IOException, UnserializeClassNotFoundException
 	{
 		ObjectInputStream in = new ObjectInputStream(this.in);
 
 		try {
 
-			return clazz.cast(in.readObject());
+			return in.readObject();
 		}
 		catch (ClassNotFoundException e) {
 

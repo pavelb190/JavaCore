@@ -9,5 +9,5 @@ import java.io.IOException;
 public interface FlowersSerializer<T extends Flower> {
 
 	public void serialize(T x) throws IOException;
-	public T unserialize() throws IOException, UnserializeClassNotFoundException, ClassCastException;
+	public Object unserialize() throws IOException, UnserializeClassNotFoundException;
 }
