@@ -30,9 +30,9 @@ public class FlowerSerializer<T extends Flower> implements FlowersSerializer<T> 
 
 		out.writeObject(x);
 
-		out.flush();
+		//out.flush();
 
-		out.close();
+		//out.close();
 	}
 
 	//@SuppressWarnings("unchecked")
@@ -48,5 +48,12 @@ public class FlowerSerializer<T extends Flower> implements FlowersSerializer<T> 
 
 			throw new UnserializeClassNotFoundException();
 		}
+	}
+
+	public void clear() throws IOException
+	{
+		out.close();
+
+		in.close();
 	}
 }
