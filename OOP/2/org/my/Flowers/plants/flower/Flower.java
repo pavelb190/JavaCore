@@ -68,4 +68,9 @@ public abstract class Flower extends Plant implements Serializable {
 	public void setType(FlowerType type) {
 		this.type = type;
 	}
+
+	public String toString()
+	{
+		return "[" + title + " (" + latinName + "): freshness level: " + freshnessLevel + "]";
+	}
 }
