@@ -9,7 +9,7 @@ import plants.flower.florist.Care;
 /**
 * Specifies just one kind of plants (Flower).
 */
-public abstract class Flower extends Plant implements Serializable {
+public abstract class Flower extends Plant implements Runnable, Serializable {
 	
 	/**
 	* Flower's latin name. 
@@ -67,6 +67,11 @@ public abstract class Flower extends Plant implements Serializable {
 	
 	public void setType(FlowerType type) {
 		this.type = type;
+	}
+
+	public void run() {
+
+		// ...
 	}
 
 	public String toString()

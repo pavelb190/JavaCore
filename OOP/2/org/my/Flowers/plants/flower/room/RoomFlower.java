@@ -3,6 +3,8 @@ package plants.flower.room;
 
 import java.lang.Math;
 
+import java.util.Random;
+
 import plants.flower.Flower;
 import plants.flower.FlowerType;
 import plants.flower.TakingCare;
@@ -14,6 +16,8 @@ import plants.flower.florist.ToWaterFlowers;
 */
 public abstract class RoomFlower extends Flower implements TakingCare<ToWaterFlowers> {
 	
+	private static Random rGenerator = new Random();
+
 	private int dailyRateMoisture;
 	private int currentMoistureAmount = 0;
 	
@@ -25,6 +29,13 @@ public abstract class RoomFlower extends Flower implements TakingCare<ToWaterFlo
 		setDailyRateMoisture(dailyRateMoisture);
 	}
 	
+	public void run()
+	{
+		takeCare(new ToWaterFlowers(rGenerator.nextInt(dailyRateMoisture * 3 + 1)));
+
+		Thread.sleep(650); grow();
+	}
+
 	public void takeCare(ToWaterFlowers care) {
 		this.currentMoistureAmount += care.getWater();
 		//setCurrentMoistureAmount(getCurrentMoistureAmount(care.getWater()));
