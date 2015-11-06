@@ -37,6 +37,11 @@ public class BouquetFlowersBuilder<T extends Flower>
 		bouquet.add(flower);
 	}
 
+	public void clear()
+	{
+		this.bouquet.clear();
+	}
+
 	public List<T> getBouquet()
 	{
 		return this.bouquet;
