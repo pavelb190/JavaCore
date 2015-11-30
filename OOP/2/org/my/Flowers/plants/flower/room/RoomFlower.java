@@ -33,7 +33,17 @@ public abstract class RoomFlower extends Flower implements TakingCare<ToWaterFlo
 	{
 		takeCare(new ToWaterFlowers(rGenerator.nextInt(dailyRateMoisture * 3 + 1)));
 
-		Thread.sleep(650); grow();
+		try {
+
+			Thread.sleep(650);
+		}
+		catch (InterruptedException e) {
+
+			e.printStackTrace();
+
+			// ...
+		}
+		grow();
 	}
 
 	public void takeCare(ToWaterFlowers care) {

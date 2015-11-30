@@ -8,6 +8,7 @@ import bouquet.BouquetFlowersBuilder;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Comparator;
+import java.util.Locale;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -18,8 +19,10 @@ import java.util.Scanner;
 public class BouquetBuilderService {
 
 	private List<? extends Flower> flowersAll = null;
+	
+	private Locale locale = null;
 
-	public BouquetBuilderService(List<? extends Flower> flowers)
+	public BouquetBuilderService(List<? extends Flower> flowers, Locale locale)
 	{
 		this.flowersAll = flowers;
 	}
@@ -91,7 +94,7 @@ public class BouquetBuilderService {
 
 		System.out.println("\nYour bouquet consists of (count: " + bouquet.size() + "): "); printFlowersList(bouquet);
 
-		System.out.println("Confirm? [y/n]");
+		System.out.println("Confirm? [Y/n]");
 
 		if(!in.next().contains("y")) {
 

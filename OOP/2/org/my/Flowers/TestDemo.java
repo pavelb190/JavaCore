@@ -8,57 +8,42 @@ import plants.flower.florist.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-import java.util.Map;
-import java.util.HashMap;
+import java.util.Locale;
 
 import bouquet.BouquetFlowersBuilder;
 
-import persistent.serialize.FlowerSerializer;
+import service.FlowersDataService;
+
+import bouquet.service.BouquetBuilderService;
 
 
 public class TestDemo {
 
 	/**
-	* Can be loaded from an external source*. (later)
+	* List of all available flowers in app.
 	*/
-	/*
-	private static List<?> flowersAll = new ArrayList<Flower>() {{
-		
-		//Begonias:
-		add(new Begonia());
-		add(new Begonia());
-		add(new Begonia());
-		
-		//Chamomiles:
-		add(new Chamomile());
-		add(new Chamomile());
-		add(new Chamomile());
-
-		//Roses:
-		add(new Rose());
-		add(new Rose());
-		add(new Rose());
-		add(new Rose());
-	}};
-	*/
-
-	//private Map<String, List<? extends Flower>> flowersAll = new HashMap<String, List<Flower>>();
+	private static List<? extends Flower> flowers = FlowersDataService.createFlowersList();
 
 	public static void main(String[] args) {
-		
+
+		Locale locale = null;
+
+		if (args.length > 0) {
+
+			locale = new Locale(args[0]);
+		}
+		else {
+
+			locale = new Locale("ru", "RU");
+		}
+
+		bouquet.service.BouquetBuilderService bouquetService = new bouquet.service.BouquetBuilderService(flowers, locale);
+
+		List<? extends Flower> bouquet = bouquetService.createBouquet();
+
 		try {
-		
-			FlowerSerializer<Begonia> serializer = new FlowerSerializer<>(
-					//System.out, System.in
-					new java.io.FileOutputStream("temp.out"), new java.io.FileInputStream("temp.out"), Begonia.class
-				);
 
-			serializer.serialize(new Begonia());
-
-			Flower a = serializer.unserialize();
-
-			System.out.println(a.getClass().getName());
+			FlowersDataService.persist(flowers);
 
 		} catch (Exception e) {
 
@@ -66,6 +51,51 @@ public class TestDemo {
 
 			// ...
 		}
+
+		//System.out.println("Bouquet size: " + bouquet.size());
+		//System.out.println("Flowers count: " + flowers.size());
+
+		/*
+		Begonia begonia = new Begonia();
+		Rose rose = new Rose();
+
+		System.out.println("Begonia current freshness level is: " + begonia.getFreshnessLevel());
+		System.out.println("Rose current freshness level is: " + rose.getFreshnessLevel());
+
+		begonia.takeCare(new ToWaterFlowers(250));
+
+		begonia.grow();
+		rose.grow();
+
+		System.out.println("Begonia current freshness level is: " + begonia.getFreshnessLevel());
+		System.out.println("Rose current freshness level is: " + rose.getFreshnessLevel());
+
+		try {
+		
+			FlowerSerializer<Flower> serializer = new FlowerSerializer<>(
+					//System.out, System.in
+					new java.io.FileOutputStream("temp.out"), new java.io.FileInputStream("temp.out") //, Begonia.class
+				);
+
+			serializer.serialize(begonia);
+			serializer.serialize(rose);
+
+			Flower a = (Begonia)serializer.unserialize();
+			Flower b = (Rose)serializer.unserialize();
+
+			System.out.println(a.getFreshnessLevel() + " " + b.getFreshnessLevel());
+
+			//System.out.println(a.getClass().getName() + " " + b.getClass().getName());
+
+			serializer.clear();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			// ...
+		}
+		*/
 
 		//BouquetFlowersBuilder bouquet = new BouquetFlowersBuilder();
 

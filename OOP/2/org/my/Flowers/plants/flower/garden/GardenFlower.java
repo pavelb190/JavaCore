@@ -25,7 +25,17 @@ public class GardenFlower extends Flower implements TakingCare<ToWeedGrass> {
 	{
 		takeCare(new ToWeedGrass(rGenerator.nextInt(10) + 1));
 
-		Thread.sleep(750); grow();
+		try {
+
+			Thread.sleep(750);
+		}
+		catch (InterruptedException e) {
+
+			e.printStackTrace();
+
+			// ...
+		}
+		grow();
 	}
 
 	public void takeCare(ToWeedGrass care) {
