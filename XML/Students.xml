@@ -5,5 +5,17 @@
 		<age>20</age>
 		<faculty>KSIS</faculty>
 	</student>
-	<student first-name="Petr" last-name="Petrov" age="21" faculty="MFIT" />
+	<student>
+		<first-name>Petr</first-name>
+		<last-name>Petrov</last-name>
+		<age>21</age>
+		<faculty>MFI</faculty>
+	</student>
+	<student>
+		<first-name>Alex</first-name>
+		<last-name>Alexandrov</last-name>
+		<age>23</age>
+		<faculty>KSIS</faculty>
+	</student>
+	<!-- <student first-name="Petr" last-name="Petrov" age="21" faculty="MFIT" />-->
 </students>

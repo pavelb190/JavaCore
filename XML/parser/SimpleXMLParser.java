@@ -3,10 +3,7 @@ package parser;
 
 public class SimpleXMLParser implements XMLParser {
 
-	
-
-	public void parse() {
-
-		// ...
+	public static XMLParser create() {
+		
 	}
 }

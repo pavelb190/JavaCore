@@ -1,7 +1,9 @@
 
-import parser.DomParser;
+//import parser.dom.DomParser;
 
 import java.io.File;
+
+import parser.XMLParser;
 
 import org.w3c.dom.Document;
 
@@ -9,12 +11,8 @@ public class TestDemo {
 
 	public static void main(String[] args) {
 
-		DomParser domParser = new DomParser(new File("Students.xml"));
+		StudentsParser studentsParser = StudentsXMLParser.create(new StudentsDOMParser(), new File("Students.xml"));
 
-		domParser.parse();
-
-		Document doc = domParser.getDocument();
-
-		System.out.println(doc.getDocumentElement().getNodeName());
+		System.out.println("Result: " + studentsParser.getResult());
 	}
 }
