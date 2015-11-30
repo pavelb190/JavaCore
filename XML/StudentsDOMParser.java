@@ -11,8 +11,6 @@ import org.w3c.dom.Element;
 
 public class StudentsDOMParser extends DomParser {
 
-	private StringBuilder xmlString = new StringBuilder();
-
 	public StudentsDOMParser(InputStream xml) {
 
 		super(xml);
@@ -25,6 +23,8 @@ public class StudentsDOMParser extends DomParser {
 		Document doc = this.getDocument();
 
 		//doc.getDocumentElement().normalize();
+
+		StringBuilder xmlString = this.getXmlStringBuilder();
 
 		xmlString.setLength(0);
 
@@ -68,10 +68,5 @@ public class StudentsDOMParser extends DomParser {
 					+ "\n");
 			}
 		}
-	}
-
-	public String getResult() {
-
-		return xmlString.toString();
 	}
 }

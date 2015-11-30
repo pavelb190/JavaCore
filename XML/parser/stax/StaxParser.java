@@ -1,17 +1,37 @@
 
 package parser.stax;
 
-import parser.XMLParser;
+import java.io.InputStream;
 
-public class StaxParser implements XMLParser {
+import java.xml.stream.XMLInputFactory;
+import java.xml.stream.XMLEventReader;
 
-	public StaxParser(File srcXml) {
+import parser.SimpleXMLParser;
 
-		
+public class StaxParser extends SimpleXMLParser {
+
+	private static final XMLInputFactory factory = XMLInputFactory.newInstance();
+
+	private XMLEventReader eventReader;
+
+	public StaxParser(InputStream xml) {
+
+		super(xml);
+
+		try {
+
+			this.eventReader = factory.createXMLEventReader(xml);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			// ...
+		}
 	}
 
 	public void parse() {
 
-		// ...
+		// Must be overrided for each implementing subclass!..
 	}
 }
