@@ -1,5 +1,5 @@
 
-import java.io.File;
+import java.io.InputStream;
 
 import parser.dom.DomParser;
 
@@ -13,14 +13,9 @@ public class StudentsDOMParser extends DomParser {
 
 	private StringBuilder xmlString = new StringBuilder();
 
-	public StudentsDOMParser() {
+	public StudentsDOMParser(InputStream xml) {
 
-		super();
-	}
-
-	public StudentsDOMParser(File studentsXml) {
-
-		super(studentsXml);
+		super(xml);
 	}
 
 	public void parse() {

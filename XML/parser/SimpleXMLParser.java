@@ -1,9 +1,21 @@
 
 package parser;
 
-public class SimpleXMLParser implements XMLParser {
+import java.io.InputStream;
 
-	public static XMLParser create() {
-		
+public abstract class SimpleXMLParser implements XMLParser {
+
+	private InputStream xml;
+
+	public SimpleXMLParser(InputStream xml) {
+
+		this.xml = xml;
 	}
+
+	public InputStream getXml() {
+
+		return xml;
+	}
+
+	/* public void parse() must be implemented in subclasses!.. */
 }

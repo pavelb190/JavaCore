@@ -1,27 +1,27 @@
 
 package parser.dom;
 
-import java.io.File;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
 import org.w3c.dom.Document;
 
-import parser.XMLParser;
+import parser.SimpleXMLParser;
 
 
-public class DomParser implements XMLParser {
+public class DomParser extends SimpleXMLParser {
 
 	private static final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 
 	private DocumentBuilder dBuilder;
 
-	private File inputXmlFile;
-
 	private Document document = null;
 
-	public DomParser() {
+	public DomParser(InputStream xml) {
+
+		super(xml);
 
 		try {
 
@@ -35,23 +35,11 @@ public class DomParser implements XMLParser {
 		}
 	}
 
-	public DomParser(File srcXml) {
-
-		this();
-
-		setInputXmlFile(srcXml);
-	}
-
-	public void setInputXmlFile(File srcXml) {
-
-		this.inputXmlFile = srcXml;
-	}
-
 	public void parse() {
 
 		try {
 
-			document = dBuilder.parse(this.inputXmlFile);
+			document = dBuilder.parse(this.getXml());
 
 		} catch (Exception e) {
 
