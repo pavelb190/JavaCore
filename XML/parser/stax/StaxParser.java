@@ -3,8 +3,8 @@ package parser.stax;
 
 import java.io.InputStream;
 
-import java.xml.stream.XMLInputFactory;
-import java.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLEventReader;
 
 import parser.SimpleXMLParser;
 
@@ -30,8 +30,13 @@ public class StaxParser extends SimpleXMLParser {
 		}
 	}
 
+	public XMLEventReader getEventReader() {
+
+		return eventReader;
+	}
+
 	public void parse() {
 
-		// Must be overrided for each implementing subclass!..
+		// Must be overrided by each implementing subclass!..
 	}
 }

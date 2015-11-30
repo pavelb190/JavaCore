@@ -12,12 +12,14 @@ public class TestDemo {
 
 	public static void main(String[] args) {
 
-		StudentsDOMParser studentsParser = null;
+		StudentsStAXParser studentsParser = null;
+		//StudentsDOMParser studentsParser = null;
 		//DomParser domParser = null;
 
 		try {
 
-			studentsParser = new StudentsDOMParser(new FileInputStream(new File("Students.xml")));
+			studentsParser = new StudentsStAXParser(new FileInputStream(new File("Students.xml")));
+			//studentsParser = new StudentsDOMParser(new FileInputStream(new File("Students.xml")));
 			//domParser = new DomParser(new FileInputStream(new File("Students.xml")));
 
 		} catch (Exception e) {
@@ -32,6 +34,6 @@ public class TestDemo {
 
 		//StudentsParser studentsParser = StudentsXMLParser.create(new StudentsDOMParser(), new File("Students.xml"));
 
-		System.out.println("Result: " + studentsParser.getResult());
+		System.out.println("[Result]: \n" + studentsParser.getResult());
 	}
 }
