@@ -1,0 +1,9 @@
+<students>
+	<student>
+		<first-name>Ivan</first-name>
+		<last-name>Ivanov</last-name>
+		<age>20</age>
+		<faculty>KSIS</faculty>
+	</student>
+	<student first-name="Petr" last-name="Petrov" age="21" faculty="MFIT" />
+</students>
