@@ -45,7 +45,7 @@ public class SaxParser extends SimpleXMLParser {
 
 			throw new Excpetion("Parse-Handler not Specified!");
 		}
-		
+
 		saxParser.parse(this.getXml(), parseHandler);
 	}
 }
