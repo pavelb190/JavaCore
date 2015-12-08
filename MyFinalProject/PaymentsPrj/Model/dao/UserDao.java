@@ -8,6 +8,6 @@ public interface UserDao {
 	public User getUserById(final long userId) throws SQLException;
 	public User getUserByName(final String username) throws SQLException;
 	public boolean checkUser(User user) throws SQLException;
-	public boolean checkPassword(final String password) throws SQLException;
+	public boolean checkPassword(final User user, final String password) throws SQLException;
 	public boolean hasRole(final String role) throws SQLException;
 }
