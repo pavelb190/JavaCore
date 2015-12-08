@@ -1,0 +1,11 @@
+
+USE DB_Payments;
+
+CREATE TABLE TransactionHistory (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	account_id INT NOT NULL,
+	money_amount NUMERIC(9,6) NOT NULL DEFAULT 0,
+	description VARCHAR(125),
+	FOREIGN KEY (account_id) REFERENCES BankAccounts(id)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);
