@@ -2,17 +2,29 @@
 
 public class User extends Entity {
 
-	private String name;
+	private String firstName;
+	private String lastName;
+
 	private String password;
 
-	public String getName() {
+	public String getFirstName() {
 
-		return this.name;
+		return this.firstName;
 	}
 
-	public void setName(final String name) {
+	public void setFirstName(final String firstName) {
 
-		this.name = name;
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+
+		return this.lastName;
+	}
+
+	public void setLastName(final String lastName) {
+
+		this.lastName = lastName;
 	}
 
 	public String getPassword() {
