@@ -2,22 +2,10 @@
 
 public class BankAccount extends Entity {
 
-	private String num;
-
 	private long userId;
 	
 	private double balance;
 	private boolean isAvailable;
-
-	public String getNum() {
-
-		return this.num;
-	}
-
-	public void setNum(final String num) {
-
-		this.num = num;
-	}
 
 	public long getUserId() {
 
