@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 import org.it.my.paymentsprj.dal.dao.UserDao;
 import org.it.my.paymentsprj.dal.dao.mysql.UserDaoImpl;
-import org.it.my.paymentsprj.dal.entity.User;
+import org.it.my.paymentsprj.dal.dto.User;
 import org.it.my.paymentsprj.domain.service.UserService;
 import org.it.my.paymentsprj.domain.service.exception.PasswordMismatchException;
 import org.it.my.paymentsprj.domain.service.exception.UserHasNoPermissionsException;
@@ -41,25 +41,7 @@ public class MyTestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		UserService userService = new UserService();
-		
-		User user = null;
-		
-		try {
-			
-			user = userService.getUser(19877);
-			
-		} catch (UserNotFoundException e) {
-			
-			e.printStackTrace();
-			
-			// ...
-		}
-		
-		if (user != null) {
-			
-			response.getWriter().println(user.getEmail() + " [" + user.getRoleId() + "].");
-		}
+		response.getWriter().println("Ha-ha-ha!!..");
 	}
 
 	/**

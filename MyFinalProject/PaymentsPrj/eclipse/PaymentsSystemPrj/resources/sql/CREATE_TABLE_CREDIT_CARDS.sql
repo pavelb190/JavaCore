@@ -1,0 +1,9 @@
+
+USE DB_Payments;
+
+CREATE TABLE CreditCards (
+	id BIGINT NOT NULL PRIMARY KEY,
+	account_id BIGINT NOT NULL,
+	FOREIGN KEY (account_id) REFERENCES BankAccounts(id)
+		ON UPDATE CASCADE ON DELETE CASCADE
+);

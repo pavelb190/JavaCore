@@ -1,8 +1,8 @@
 package org.it.my.paymentsprj.dal.dao;
 
-import java.sql.SQLException;
+import org.it.my.paymentsprj.dal.dto.UserRole;
 
-public interface UserRoleDao {
+public interface UserRoleDao extends Dao<UserRole> {
 	
-	public String getRoleById(final int id) throws SQLException;
+	// ...
 }

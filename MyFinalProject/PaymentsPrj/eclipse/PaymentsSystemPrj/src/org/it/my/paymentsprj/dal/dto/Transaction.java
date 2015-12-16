@@ -1,4 +1,6 @@
-package org.it.my.paymentsprj.dal.entity;
+package org.it.my.paymentsprj.dal.dto;
+
+import java.util.Date;
 
 public class Transaction extends Entity {
 	
@@ -6,9 +8,11 @@ public class Transaction extends Entity {
 
 	private double moneyAmount;
 
-	private boolean isPayment;
+	private boolean payment;
 
 	private String description;
+	
+	private Date committedAt;
 
 	public long getAccountId() {
 
@@ -32,12 +36,12 @@ public class Transaction extends Entity {
 
 	public boolean isPayment() {
 
-		return this.isPayment;
+		return this.payment;
 	}
 
-	public void isPayment(boolean isPayment) {
+	public void setPayment(boolean isPayment) {
 
-		this.isPayment = isPayment;
+		this.payment = isPayment;
 	}
 
 	public String getDescription() {
@@ -48,5 +52,15 @@ public class Transaction extends Entity {
 	public void setDescription(String description) {
 
 		this.description = description;
+	}
+	
+	public Date getCommittedAt() {
+		
+		return this.committedAt;
+	}
+	
+	public void setCommittedAt(Date committedAt) {
+		
+		this.committedAt = committedAt;
 	}
 }

@@ -1,10 +1,11 @@
 package org.it.my.paymentsprj.dal.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
-import org.it.my.paymentsprj.dal.entity.Transaction;
+import org.it.my.paymentsprj.dal.dto.Transaction;
 
-public interface TransactionDao {
+public interface TransactionDao extends Dao<Transaction> {
 	
-	public void addTransaction(Transaction transaction) throws SQLException;
+	public List<Transaction> findByAccountId(final long id) throws SQLException;
 }

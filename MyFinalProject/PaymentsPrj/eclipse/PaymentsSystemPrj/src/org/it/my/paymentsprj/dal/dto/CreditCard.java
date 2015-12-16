@@ -1,4 +1,4 @@
-package org.it.my.paymentsprj.dal.entity;
+package org.it.my.paymentsprj.dal.dto;
 
 public class CreditCard extends Entity {
 	

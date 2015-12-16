@@ -1,12 +1,15 @@
 package org.it.my.paymentsprj.domain.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.it.my.paymentsprj.dal.dao.UserDao;
 import org.it.my.paymentsprj.dal.dao.UserRoleDao;
 import org.it.my.paymentsprj.dal.dao.mysql.UserDaoImpl;
 import org.it.my.paymentsprj.dal.dao.mysql.UserRoleDaoImpl;
-import org.it.my.paymentsprj.dal.entity.User;
+import org.it.my.paymentsprj.dal.dto.User;
+import org.it.my.paymentsprj.dal.dto.UserDetails;
+import org.it.my.paymentsprj.dal.dto.UserRole;
 import org.it.my.paymentsprj.domain.service.exception.PasswordMismatchException;
 import org.it.my.paymentsprj.domain.service.exception.UserHasNoPermissionsException;
 import org.it.my.paymentsprj.domain.service.exception.UserNotFoundException;
@@ -28,7 +31,7 @@ public class UserService {
 		
 		try {
 			
-			user = userDaoImpl.getUserById(id);
+			user = userDaoImpl.findById(id);
 			
 			if (user == null) {
 				
@@ -51,7 +54,7 @@ public class UserService {
 		
 		try {
 			
-			user = userDaoImpl.getUserByEmail(email);
+			user = userDaoImpl.findByEmail(email);
 			
 			if (user == null) {
 				
@@ -76,7 +79,7 @@ public class UserService {
 		
 		try {
 			
-			userById = userDaoImpl.getUserById(user.getId());
+			userById = userDaoImpl.findById(user.getId());
 			
 			if (userById != null) {
 				
@@ -106,21 +109,21 @@ public class UserService {
 	
 	public boolean hasRole(User user, final String roleRequired) throws UserHasNoPermissionsException {
 		
-		String role = null;
+		UserRole userRole = null;
 		
 		boolean hasPermissions = false;
 		
 		try {
 			
-			role = userRoleDaoImpl.getRoleById(user.getRoleId());
+			userRole = userRoleDaoImpl.findById(user.getRoleId());
 			
-			if (role != null && role.equals(roleRequired)) {
+			if (userRole != null && userRole.getRole().equals(roleRequired)) {
 				
 				hasPermissions = true;
 				
 			} else {
 				
-				throw new UserHasNoPermissionsException("User has no role " + role + "!");
+				throw new UserHasNoPermissionsException("User has no role " + roleRequired + "!");
 			}
 			
 		} catch (SQLException e) {
@@ -132,4 +135,23 @@ public class UserService {
 		
 		return hasPermissions;
 	}
+	
+	public List<UserDetails> getUserDetailsForAll() {
+		
+		List<UserDetails> usersDetailsAll = null;
+		
+		try {
+			
+			usersDetailsAll = userDaoImpl.findAllWithDetails();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+			// ...
+		}
+		
+		return usersDetailsAll;
+	}
+	
 }

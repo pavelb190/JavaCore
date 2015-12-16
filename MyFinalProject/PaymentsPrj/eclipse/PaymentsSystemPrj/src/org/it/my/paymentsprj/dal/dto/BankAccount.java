@@ -1,4 +1,4 @@
-package org.it.my.paymentsprj.dal.entity;
+package org.it.my.paymentsprj.dal.dto;
 
 public class BankAccount extends Entity {
 	
@@ -6,7 +6,7 @@ public class BankAccount extends Entity {
 	
 	private double balance;
 	
-	private boolean isAvailable;
+	private boolean available;
 
 	public long getUserId() {
 
@@ -30,11 +30,11 @@ public class BankAccount extends Entity {
 
 	public boolean isAvailable() {
 
-		return this.isAvailable;
+		return this.available;
 	}
 
-	public void isAvailable(boolean available) {
+	public void setAvailable(boolean available) {
 
-		this.isAvailable = available;
+		this.available = available;
 	}
 }
