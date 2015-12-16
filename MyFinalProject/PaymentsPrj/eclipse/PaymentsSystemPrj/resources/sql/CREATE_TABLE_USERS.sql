@@ -1,0 +1,13 @@
+
+USE DB_Payments;
+
+CREATE TABLE Users (
+	id INT NOT NULL PRIMARY KEY,
+	first_name VARCHAR(25) NOT NULL,
+	last_name VARCHAR(45) NOT NULL,
+	password CHAR(45) NOT NULL,
+	email VARCHAR(45) NOT NULL,
+	role_id INT NOT NULL,
+	FOREIGN KEY (role_id) REFERENCES User_roles(id)
+		ON UPDATE CASCADE ON DELETE RESTRICT
+);

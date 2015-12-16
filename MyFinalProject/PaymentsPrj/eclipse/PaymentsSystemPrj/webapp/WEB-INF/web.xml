@@ -4,6 +4,10 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+  	<param-name>SESSION_ID_HAS_ROLE_LABEL</param-name>
+  	<param-value>USER_HAS_ROLE</param-value>
+  </context-param>
   <resource-ref>
     <description>MySQL DB Connection Pool</description>
     <res-ref-name>jdbc/DB_Payments</res-ref-name>

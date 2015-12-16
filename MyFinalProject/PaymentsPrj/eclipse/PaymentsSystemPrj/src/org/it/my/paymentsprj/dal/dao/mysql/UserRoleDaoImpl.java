@@ -4,32 +4,65 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.it.my.paymentsprj.dal.dao.UserRoleDao;
+import org.it.my.paymentsprj.dal.dto.Entity;
+import org.it.my.paymentsprj.dal.dto.UserRole;
 
 public class UserRoleDaoImpl extends AbstractDaoImpl implements UserRoleDao {
 
 	@Override
-	public String getRoleById(int id) throws SQLException {
+	public void add(UserRole entity) throws SQLException {
+		// TODO Auto-generated method stub
 		
-		final String SQL_STR = "SELECT role FROM User_roles WHERE id = ?";
+	}
+
+	@Override
+	public void update(long id, UserRole entity) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long id) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public UserRole findById(long id) throws SQLException {
+		
+		final String SQL_STR = "SELECT * FROM User_roles WHERE id = ?";
 		
 		Connection conn = this.getConnection();
 		
 		PreparedStatement stmt = conn.prepareStatement(SQL_STR);
 		
-		stmt.setInt(1, id);
+		stmt.setLong(1, id);
 		
 		ResultSet rs = stmt.executeQuery();
 		
-		String role = null;
+		UserRole userRole = null;
 		
 		if (rs.next()) {
 			
-			role = rs.getString("role");
+			userRole = new UserRole();
+			
+			userRole.setId(rs.getLong("id"));
+			
+			userRole.setRole(rs.getString("role"));
 		}
 		
-		return role;
+		conn.close();
+		
+		return userRole;
+	}
+
+	@Override
+	public List<UserRole> findAll() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
